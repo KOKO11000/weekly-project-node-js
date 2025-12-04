@@ -2,15 +2,17 @@ import { newIntellegenceReport} from "./objectsReport.js"
 import {addReport,deleteReportById }from "../services/intellence_report.js"
 import DATABASE from "../DB/dataBase.js";
 
+function validateIdInDatabase(id) {
+     const exsists = DATABASE.find(Report => Report.id === id)
+        if (!exsists) {
+            return true
+        }else{
+            throw new Error("id already exsist in DATABASE");   
+        }
+}
+   
+    
 
-export const validationReport = (personalId) =>{
-    if (newIntellegenceReport.id in DATABASE) {
-        console.log("id already exsit");
-        
-    }else{
-        addReport(personalId)
-    }
-};
 
 
 
